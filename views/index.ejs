@@ -1,0 +1,26 @@
+<!-- Include Header -->
+<%- include('partials/header'); %>
+
+
+<div class="wrapper">
+  <header>Todo App</header>
+  
+  <form action="/add/todo" method="POST" class="form-group inputField">
+    <input type="text" name="todo" placeholder="Add your new todo">
+    <button type="submit" class="btn"><i class="bx bx-plus"></i></button>
+  </form>
+  
+  <ul class="todoList">
+    <% todos.forEach(todo => { %>
+      <li class="d-flex justify-content-between align-items-center w-100">
+        <%= todo.todo %> 
+        <form action="/delete/<%= todo.id %>?_method=DELETE" method="POST" class="inputField form-delete">
+          <button type="submit" class="btn"><i class="bx bx-trash"></i></button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</div>
+
+<!-- Include Footer -->
+<%- include('partials/footer'); %> 
